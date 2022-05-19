@@ -80,3 +80,18 @@ app.post('/launchX', async (req, res) => {
   await prisma.LaunchX.create({data: explorer});
   return res.json({message});
 });
+
+app.put('/launchX/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+
+	await prisma.LaunchX.update({
+		where: {
+			id: id
+		},
+		data: {
+			lang: "Java"
+		}
+	})
+
+	return res.json({message: "Actualizado correctamente"});
+});
