@@ -62,3 +62,9 @@ app.get('/launchX', async (req, res) => {
   const allExplorers =  await prisma.LaunchX.findMany({});
   res.json(allExplorers);
 });
+
+app.get('/launchX/:id', async (req, res) => {
+  const id = req.params.id;
+  const explorer = await prisma.LaunchX.findUnique({where: {id: parseInt(id)}});
+  res.json(explorer);
+});
