@@ -57,3 +57,8 @@ app.delete('/explorers/:id', async (req, res) => {
 	await prisma.explorer.delete({where: {id: id}});
 	return res.json({message: "Eliminado correctamente",id: id});
 });
+
+app.get('/launchX', async (req, res) => {
+  const allExplorers =  await prisma.LaunchX.findMany({});
+  res.json(allExplorers);
+});
