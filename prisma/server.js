@@ -95,3 +95,9 @@ app.put('/launchX/:id', async (req, res) => {
 
 	return res.json({message: "Actualizado correctamente"});
 });
+
+app.delete('/launchX/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+	await prisma.LaunchX.delete({where: {id: id}});
+	return res.json({message: "Eliminado correctamente",id: id});
+});
