@@ -68,3 +68,15 @@ app.get('/launchX/:id', async (req, res) => {
   const explorer = await prisma.LaunchX.findUnique({where: {id: parseInt(id)}});
   res.json(explorer);
 });
+
+app.post('/launchX', async (req, res) => {
+  const explorer = {
+    name: "Juan",
+    lang: "Java",
+    missionCommander: "FerOchoa",
+    enrollments: 5
+   };
+  const message = 'Explorer creado.';
+  await prisma.LaunchX.create({data: explorer});
+  return res.json({message});
+});
